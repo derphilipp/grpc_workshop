@@ -1,0 +1,9 @@
+FROM docker.io/python:3.11
+
+RUN pip install --no-cache-dir grpcio grpcio-tools
+
+WORKDIR /app
+
+ADD python /app
+
+#ENTRYPOINT ["sh"]

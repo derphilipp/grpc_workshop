@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+docker run \
+	--rm --interactive --tty \
+	--name grpc_python_client \
+	--network=host \
+	grpc_python \
+        python client.py

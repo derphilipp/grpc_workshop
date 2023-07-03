@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+docker build --file Dockerfiles/Dockerfile_python . --tag grpc_python

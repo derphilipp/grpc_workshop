@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+docker run \
+	--rm --interactive --tty \
+	--name grpc_python_server \
+	--network=host \
+	grpc_python \
+	python server.py

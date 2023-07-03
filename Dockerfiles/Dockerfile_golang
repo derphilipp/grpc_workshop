@@ -1,0 +1,15 @@
+FROM docker.io/golang:1.20-alpine AS builder
+
+ADD ./golang /app
+
+WORKDIR /app
+
+RUN go get ./...
+
+RUN CGO_ENABLED=0 go build -o client ./cmd/client/client.go
+RUN CGO_ENABLED=0 go build -o server ./cmd/server/server.go
+
+FROM scratch
+
+COPY --from=builder /app/client /client
+COPY --from=builder /app/server /server

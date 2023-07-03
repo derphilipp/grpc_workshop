@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+docker run \
+	--rm --interactive --tty \
+	--name grpc_golang_client \
+	--network=host \
+	grpc_golang \
+	/client
+

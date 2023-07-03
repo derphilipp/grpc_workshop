@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package user;
+
+// Language specific settings
+option go_package = "github.com/derphilipp/grpc_workshop/user";
+
+// Das User-Service-Protokoll bietet Funktionen zum Erstellen, Abrufen, Aktualisieren und Löschen von Benutzern.
+service UserService {
+  // Erstellt einen neuen Benutzer und gibt die erstellte Benutzer-ID zurück.
+  rpc CreateUser (CreateUserRequest) returns (CreateUserResponse) {}
+
+  // Ruft die Details eines bestimmten Benutzers ab, basierend auf der Benutzer-ID.
+  rpc GetUser (GetUserRequest) returns (GetUserResponse) {}
+
+  // Aktualisiert die Details eines bestimmten Benutzers, basierend auf der Benutzer-ID.
+  rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse) {}
+
+  // Löscht einen Benutzer basierend auf der Benutzer-ID.
+  rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse) {}
+}
+
+message User {
+  int64 id = 1;
+  string first_name = 2;
+  string last_name = 3;
+  string email = 4;
+}
+
+message CreateUserRequest {
+  User user = 1;
+}
+
+message CreateUserResponse {
+  int64 id = 1;
+}
+
+message GetUserRequest {
+  int64 id = 1;
+}
+
+message GetUserResponse {
+  User user = 1;
+}
+
+message UpdateUserRequest {
+  User user = 1;
+}
+
+message UpdateUserResponse {
+}
+
+message DeleteUserRequest {
+  int64 id = 1;
+}
+
+message DeleteUserResponse {
+}
+
+message Empty {
+}
